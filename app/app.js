@@ -858,6 +858,7 @@
     el.upgrade.appendChild(go);
     var guar = document.createElement('p'); guar.className = 'muted up-guar'; guar.textContent = t('up_guarantee');
     el.upgrade.appendChild(guar);
+    var carry = document.createElement('p'); carry.className = 'muted up-carry hidden'; el.upgrade.appendChild(carry);
 
     var err = document.createElement('p'); err.className = 'up-err hidden'; el.upgrade.appendChild(err);
     var FEATURES = {
@@ -909,6 +910,10 @@
       go.classList.toggle('ghost', free);
       go.textContent = free ? t('up_stay') : t('up_continue_plan', { plan: chosen === 'pro' ? 'Pro' : 'Lite' });
       guar.textContent = free ? freeNote() : t('up_guarantee');
+      // 16.10 Денис: «Осталось кредитов: 10» на Free + «Всё, что есть в бесплатном» на Lite читается
+      // как 150 минут плюс кредиты. Сервер с подпиской считает только минуты тарифа (usage.js).
+      carry.textContent = t('up_no_carry', { n: fu ? fu.remaining : 0 });
+      carry.classList.toggle('hidden', free || !(fu && fu.remaining > 0));
     }
     function freeNote() {
       return fu && fu.reset_date ? t('up_free_note', { date: fmtDay(fu.reset_date) }) : t('up_free_note_nodate');
