@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="icon" href="/assets/logo-mark.svg" type="image/svg+xml">
+<link rel="icon" href="/assets/logo-mark-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/assets/logo-mark-180.png">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pricing: Transcribe Video to Text</title>
+<meta name="description" content="Transcribe Video to Text plans: Free, Lite and Pro. YouTube transcripts stay free and unlimited. Paid plans add more minutes of AI transcription for any video.">
+<link rel="canonical" href="https://transcribevideototext.app/pricing/">
+<link rel="stylesheet" href="/styles.css">
+<script defer src="https://api.devexthub.com:8443/u/script.js" data-website-id="9cd8ea39-4803-4558-82cb-4821a96e581d" data-host-url="https://api.devexthub.com:8443/u" data-domains="transcribevideototext.app"></script>
+<style>
+  .pricing { max-width: 1000px; margin: 48px auto; padding: 0 22px; }
+  .pricing h1 { font-family: var(--serif); font-weight: 400; font-size: 2.6em; text-align: center; margin: 0 0 8px; }
+  .pricing .lead { text-align: center; color: var(--muted); margin: 0 auto 28px; max-width: 620px; }
+  .period { display: flex; justify-content: center; gap: 6px; margin-bottom: 28px; }
+  .period button { font: inherit; padding: 8px 18px; border-radius: 999px; border: 1px solid var(--line); background: var(--bg); cursor: pointer; color: var(--ink-soft); }
+  .period button[aria-pressed="true"] { background: var(--ink); color: #fff; border-color: var(--ink); }
+  .plans { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px; }
+  .plan { border: 1px solid var(--line); border-radius: var(--radius); padding: 26px; background: var(--bg); box-shadow: var(--shadow-card); position: relative; display: flex; flex-direction: column; }
+  .plan.rec { border: 2px solid var(--green); }
+  .plan .badge { position: absolute; top: -12px; left: 26px; background: var(--green); color: #fff; font-size: 12px; padding: 3px 10px; border-radius: 999px; }
+  .plan h2 { margin: 0 0 6px; font-size: 1.25em; }
+  .plan .price { font-size: 2.1em; font-weight: 700; margin: 8px 0 2px; }
+  .plan .price small { font-size: 0.42em; font-weight: 400; color: var(--muted); }
+  .plan .billed { color: var(--muted); font-size: 0.9em; min-height: 1.4em; }
+  .plan .for { color: var(--ink-soft); font-size: 0.93em; margin: 10px 0 0; }
+  .plan ul { list-style: none; padding: 0; margin: 18px 0; line-height: 1.55; flex: 1; }
+  .plan li { position: relative; padding-left: 26px; margin-bottom: 9px; }
+  .plan li::before { content: "✓"; position: absolute; left: 0; color: var(--green); font-weight: 700; }
+  .plan li.no { color: #a3a8a4; text-decoration: line-through; }
+  .plan li.no::before { content: "✕"; color: #c4c8c5; }
+  .compare { max-width: 1000px; margin: 48px auto 0; }
+  .compare h2, .faq h2 { font-family: var(--serif); font-weight: 400; font-size: 1.9em; text-align: center; margin-bottom: 18px; }
+  .compare-scroll { overflow-x: auto; }
+  .compare table { width: 100%; border-collapse: collapse; min-width: 620px; font-size: 0.95em; }
+  .compare th, .compare td { padding: 12px 14px; border-bottom: 1px solid var(--line); text-align: center; }
+  .compare th:first-child, .compare td:first-child { text-align: left; color: var(--ink-soft); }
+  .compare thead th { font-size: 1.05em; }
+  .compare .rec-col { background: #f1f8f3; }
+  .faq { max-width: 760px; margin: 48px auto 0; }
+  .faq details { border-bottom: 1px solid var(--line); padding: 14px 0; }
+  .faq summary { cursor: pointer; font-weight: 600; }
+  .faq details p { color: var(--ink-soft); margin: 10px 0 0; line-height: 1.7; }
+  .plan .soon { display: block; text-align: center; padding: 12px; border-radius: 10px; background: var(--bg-soft); color: var(--muted); font-weight: 600; }
+  .notes { max-width: 760px; margin: 36px auto 0; color: var(--ink-soft); font-size: 0.95em; line-height: 1.7; }
+  .notes h2 { font-size: 1.1em; margin-top: 26px; }
+</style>
+</head>
+<body>
+<header class="site-head sticky">
+  <div class="wrap headrow">
+    <a class="brand" href="/"><span class="dot"></span>Transcribe Video to Text</a>
+    <nav class="nav">
+      <a href="/#how">How it works</a>
+      <a href="/pricing/">Pricing</a>
+      <a href="/#contact">Support</a>
+      <a class="btn btn-sm store-link" href="https://chromewebstore.google.com/detail/mgblgaahjeahphiahfakjiabnheanbhj" data-umami-event="store-click" data-umami-event-ext="transcribe">Add to Chrome</a>
+    </nav>
+  </div>
+</header>
+
+<main class="pricing">
+  <h1>Pricing</h1>
+  <p class="lead">YouTube transcripts stay free and unlimited. Paid plans add more minutes of AI transcription for videos without subtitles: courses, webinars, Loom, Vimeo and most other sites.</p>
+
+  <div class="period" role="group" aria-label="Billing period">
+    <button type="button" data-period="year" aria-pressed="true">Yearly</button>
+    <button type="button" data-period="month" aria-pressed="false">Monthly</button>
+  </div>
+
+  <div class="plans">
+    <section class="plan">
+      <h2>Free</h2>
+      <div class="price">$0</div>
+      <div class="billed">No card needed</div>
+      <p class="for">To try it out and for YouTube.</p>
+      <ul>
+        <li>YouTube and Vimeo transcripts from subtitles, unlimited, no sign-up</li>
+        <li>AI transcription of any video: a few recordings every month</li>
+        <li>Timestamps and speaker labels</li>
+        <li>51 languages, or auto-detect</li>
+        <li>Export to Word, TXT or SRT</li>
+        <li>Online library, transcripts kept 90 days with Google sign-in</li>
+        <li>AI summaries and study notes: a few to try</li>
+        <li class="no">Hours of AI transcription every month</li>
+        <li class="no">Unlimited summaries and study notes</li>
+      </ul>
+      <a class="btn store-link" href="https://chromewebstore.google.com/detail/mgblgaahjeahphiahfakjiabnheanbhj" data-umami-event="store-click" data-umami-event-ext="transcribe" style="display:flex;justify-content:center;">Add to Chrome</a>
+    </section>
+
+    <section class="plan">
+      <h2>Lite</h2>
+      <div class="price" data-year="$4.99" data-month="$7.99">$4.99<small> / month</small></div>
+      <div class="billed" data-year="$59.88 billed yearly" data-month="Billed monthly">$59.88 billed yearly</div>
+      <p class="for">For lectures and courses now and then.</p>
+      <ul>
+        <li><b>150 minutes</b> of AI transcription every month (2.5 hours of video)</li>
+        <li>Courses behind a login, webinars, Loom, embedded players</li>
+        <li>Recordings up to 2 hours each</li>
+        <li>Unlimited AI summaries and study notes</li>
+        <li>Everything in Free</li>
+      </ul>
+      <span class="soon">Coming soon</span>
+    </section>
+
+    <section class="plan rec">
+      <span class="badge">Recommended</span>
+      <h2>Pro</h2>
+      <div class="price" data-year="$9.99" data-month="$14.99">$9.99<small> / month</small></div>
+      <div class="billed" data-year="$119.88 billed yearly" data-month="Billed monthly">$119.88 billed yearly</div>
+      <p class="for">For daily study and work.</p>
+      <ul>
+        <li><b>500 minutes</b> of AI transcription every month (over 8 hours of video)</li>
+        <li>Courses behind a login, webinars, Loom, embedded players</li>
+        <li>Recordings up to 2 hours each</li>
+        <li>Unlimited AI summaries and study notes</li>
+        <li>Priority email support</li>
+        <li>Everything in Free</li>
+      </ul>
+      <span class="soon">Coming soon</span>
+    </section>
+  </div>
+
+  <section class="compare">
+    <h2>Compare plans</h2>
+    <div class="compare-scroll">
+    <table>
+      <thead><tr><th></th><th>Free</th><th>Lite</th><th class="rec-col">Pro</th></tr></thead>
+      <tbody>
+        <tr><td>YouTube and Vimeo with subtitles</td><td>Unlimited</td><td>Unlimited</td><td class="rec-col">Unlimited</td></tr>
+        <tr><td>AI transcription, videos without subtitles</td><td>A few per month</td><td>150 min / month</td><td class="rec-col">500 min / month</td></tr>
+        <tr><td>Length of one recording</td><td>Up to 2 hours</td><td>Up to 2 hours</td><td class="rec-col">Up to 2 hours</td></tr>
+        <tr><td>Timestamps and speaker labels</td><td>✓</td><td>✓</td><td class="rec-col">✓</td></tr>
+        <tr><td>Languages</td><td>51 + auto-detect</td><td>51 + auto-detect</td><td class="rec-col">51 + auto-detect</td></tr>
+        <tr><td>Export to Word, TXT, SRT</td><td>✓</td><td>✓</td><td class="rec-col">✓</td></tr>
+        <tr><td>Online library</td><td>90 days with sign-in</td><td>90 days</td><td class="rec-col">90 days</td></tr>
+        <tr><td>AI summaries</td><td>A few to try</td><td>Unlimited</td><td class="rec-col">Unlimited</td></tr>
+        <tr><td>Study notes</td><td>A few to try</td><td>Unlimited</td><td class="rec-col">Unlimited</td></tr>
+        <tr><td>Support</td><td>Email</td><td>Email</td><td class="rec-col">Priority email</td></tr>
+      </tbody>
+    </table>
+    </div>
+  </section>
+
+  <section class="faq">
+    <h2>Questions</h2>
+    <details><summary>Do YouTube transcripts use my minutes?</summary><p>No. When a video has subtitles (most of YouTube, many Vimeo videos), the transcript is free and unlimited on every plan. Minutes are used only when the extension listens to the audio of a video that has no subtitles.</p></details>
+    <details><summary>What happens when my minutes run out?</summary><p>The recording in progress stops at the limit and its text is saved. Everything you already transcribed stays in your library and can be exported. Minutes refill at the start of your next billing month, and YouTube with subtitles keeps working.</p></details>
+    <details><summary>Can I cancel at any time?</summary><p>Yes. You keep your plan until the end of the period you already paid for, and there are no further charges.</p></details>
+    <details><summary>Is my audio stored?</summary><p>No. Audio goes over an encrypted connection to the speech recognition service only to produce your transcript and is not stored on our servers. We never sell your data.</p></details>
+  </section>
+
+  <div class="notes">
+    <h2>How minutes are counted</h2>
+    <p>Minutes are counted by the length of the recording the extension listens to. Transcripts made from YouTube subtitles never use minutes. Unused minutes do not carry over to the next month.</p>
+    <h2>Billing</h2>
+    <p>Prices are in US dollars. Payments are processed by our online reseller and Merchant of Record, Paddle.com, which also handles invoices, taxes and payment questions. Depending on your country, VAT or sales tax may apply. A subscription renews automatically until you cancel it, and you keep your plan until the end of the period you paid for.</p>
+    <p>See also: <a href="/terms/">Terms of Service</a>, <a href="/refund-policy/">Refund Policy</a>, <a href="/privacy-policy/">Privacy Policy</a>. Questions: <a href="mailto:team@devexthub.com">team@devexthub.com</a></p>
+  </div>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <a class="store-link" href="https://chromewebstore.google.com/detail/mgblgaahjeahphiahfakjiabnheanbhj" data-umami-event="store-click" data-umami-event-ext="transcribe">Chrome Web Store</a>
+    <a href="/pricing/">Pricing</a>
+    <a href="/#contact">Contact</a>
+    <a href="/terms/">Terms</a>
+    <a href="/refund-policy/">Refunds</a>
+    <a href="/privacy-policy/">Privacy</a>
+    <span style="display:block;margin-top:12px;font-size:13px;">YouTube is a trademark of Google LLC, Vimeo is a trademark of Vimeo.com, Inc. All other product names belong to their owners. Transcribe Video to Text is an independent tool, not affiliated with or endorsed by Google, YouTube or Vimeo.</span>
+    <span style="display:block;margin-top:12px;">&copy; 2026 Transcribe Video to Text</span>
+  </div>
+</footer>
+
+<script>
+document.querySelectorAll('.period button').forEach(function (b) {
+  b.addEventListener('click', function () {
+    var p = b.dataset.period;
+    document.querySelectorAll('.period button').forEach(function (x) { x.setAttribute('aria-pressed', String(x === b)); });
+    document.querySelectorAll('.price[data-year]').forEach(function (el) { el.firstChild.nodeValue = el.dataset[p]; });
+    document.querySelectorAll('.billed[data-year]').forEach(function (el) { el.textContent = el.dataset[p]; });
+  });
+});
+</script>
+</body>
+</html>

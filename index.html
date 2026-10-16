@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="icon" href="/assets/logo-mark.svg" type="image/svg+xml">
+<link rel="icon" href="/assets/logo-mark-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/assets/logo-mark-180.png">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>YouTube Transcript & Video to Text, free Chrome extension</title>
+<meta name="description" content="Get a YouTube transcript or turn any video into text in one click. Clean speaker-by-speaker layout with timestamps, export to Word, TXT or SRT. Works on YouTube, TikTok, Vimeo, Loom and most sites. 50+ languages, YouTube with no sign-up.">
+<link rel="canonical" href="https://www.devexthub.com/transcribe-video-to-text/">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Transcribe Video to Text","applicationCategory":"UtilitiesApplication","operatingSystem":"Chrome","url":"https://transcribevideototext.app/","downloadUrl":"https://chromewebstore.google.com/detail/mgblgaahjeahphiahfakjiabnheanbhj","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+</script>
+<meta property="og:title" content="YouTube Transcript & Video to Text, free Chrome extension">
+<meta property="og:description" content="Transcribe any video to text in one click. Clean speaker layout with timestamps, export to Word, TXT or SRT. YouTube, TikTok, Vimeo, Loom and more. 50+ languages, YouTube with no sign-up.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://transcribevideototext.app/assets/tvt-og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://transcribevideototext.app/assets/tvt-og.jpg">
+<link rel="stylesheet" href="/styles.css">
+<style>
+.contact { max-width: 620px; }
+.contact form { display: grid; gap: 12px; margin-top: 18px; }
+.contact input, .contact textarea { font: inherit; padding: 12px 14px; border: 1px solid #d9dcd8; border-radius: 10px; background: #fff; width: 100%; box-sizing: border-box; }
+.contact button { justify-self: start; }
+.contact .hp { position: absolute; left: -9999px; width: 1px; height: 1px; }
+.contact-status { margin: 0; min-height: 1.4em; }
+.contact-status.err { color: #b42318; }
+</style>
+<script defer src="https://api.devexthub.com:8443/u/script.js" data-website-id="9cd8ea39-4803-4558-82cb-4821a96e581d" data-host-url="https://api.devexthub.com:8443/u" data-domains="transcribevideototext.app"></script>
+</head>
+<body>
+<header class="site-head sticky">
+  <div class="wrap headrow">
+    <a class="brand" href="/"><span class="dot"></span>Transcribe Video to Text</a>
+    <nav class="nav">
+      <a href="/#how">How it works</a>
+      <a href="/pricing/">Pricing</a>
+      <a href="/#contact">Support</a>
+      <a class="btn btn-sm store-link" href="https://chromewebstore.google.com/detail/mgblgaahjeahphiahfakjiabnheanbhj" data-umami-event="store-click" data-umami-event-ext="transcribe">Add to Chrome</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero-band reveal">
+   <div class="hero wrap">
+    <h1><span class="fx-line"><span class="fx-w" style="--i:0">Get</span> <span class="fx-w" style="--i:1">a</span> <span class="fx-w" style="--i:2">transcript</span> <span class="fx-w" style="--i:3">of</span></span><span class="fx-line"><span class="fx-w" style="--i:4">any</span> <span class="fx-w" style="--i:5">video</span> <span class="fx-w" style="--i:6">in</span> <span class="fx-w arrow" style="--i:7">one&nbsp;click</span></span></h1>
+    <p class="sub">Turn a YouTube video, TikTok, Vimeo, Loom or almost any recording into clean text, laid out by speaker with timestamps. Export it to Word, TXT or SRT. 50+ languages. YouTube works with no&nbsp;sign&#8209;up.</p>
+    <div class="cta-row">
+      <a class="btn btn-lg store-link" href="https://chromewebstore.google.com/detail/mgblgaahjeahphiahfakjiabnheanbhj" data-umami-event="store-click" data-umami-event-ext="transcribe">Add to Chrome &middot; free</a>
+    </div>
+    <p class="note">YouTube: unlimited and free, no&nbsp;sign&#8209;up &middot; other sites: 3 AI transcripts free, then a free Google sign-in</p>
+   </div>
+  </section>
+
+  <section class="demo wrap reveal">
+    <img src="/assets/tvt-demo.jpg" alt="Transcribe Video to Text extension generating a live YouTube transcript with timestamps in a side panel, with an Export button" loading="lazy">
+  </section>
+
+  <section class="trust reveal">
+    <div class="wrap trust-row">
+      <span class="trust-item"><b>One click</b> to transcript</span>
+      <span class="trust-item"><b>50+</b> languages</span>
+      <span class="trust-item"><b>No</b> account needed</span>
+      <span class="trust-item"><b>Export to</b> Word, TXT, SRT</span>
+    </div>
+  </section>
+
+  <section class="section soft reveal" id="problem">
+    <div class="wrap narrow">
+      <h2>Copying a transcript by hand is painful</h2>
+      <p class="lead">Pausing every few seconds, scrubbing back, retyping what you just heard. Or pasting a video link into some sketchy site and hoping it works. This reads the video for you and hands you the full text in seconds, without leaving the page.</p>
+    </div>
+  </section>
+
+  <section class="section reveal" id="how">
+    <div class="wrap">
+      <h2>How it works</h2>
+      <p class="lead">Three steps, a few seconds. No file to upload, no software to install.</p>
+      <div class="grid3">
+        <div class="card">
+          <span class="step-num">1</span>
+          <h3>Open any video</h3>
+          <p>A YouTube video, a TikTok, a Vimeo, a Loom recording, a lecture, a webinar. Anything playing in your browser.</p>
+        </div>
+        <div class="card">
+          <span class="step-num">2</span>
+          <h3>Click the icon</h3>
+          <p>The extension reads the audio or the captions and builds a complete transcript with AI speech recognition.</p>
+        </div>
+        <div class="card">
+          <span class="step-num">3</span>
+          <h3>Copy or export</h3>
+          <p>Get clean, readable text in the side panel, laid out by speaker. Export it as Word, TXT or SRT subtitles, ready to use.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section soft reveal" id="platforms">
+    <div class="wrap">
+      <h2>Works where you watch</h2>
+      <p class="lead">One extension, most of the web. Public videos or content behind a login.</p>
+      <div class="platforms">
+        <span class="pill">YouTube <span class="free">free &amp; unlimited</span></span>
+        <span class="pill">Vimeo <span class="free">free</span></span>
+        <span class="pill">TikTok</span>
+        <span class="pill">Loom</span>
+        <span class="pill">Coursera</span>
+        <span class="pill">+ most sites</span>
+      </div>
+      <img src="/assets/tvt-platforms.jpg" alt="Transcribe Video to Text working across YouTube, Vimeo, Zoom, Google Meet, Teams, Loom, Spotify, Coursera and Udemy, with free platforms and AI mode marked" loading="lazy" style="display:block;width:100%;max-width:900px;margin:28px auto 0;border:1px solid var(--line);border-radius:14px;">
+    </div>
+  </section>
+
+  <section class="section reveal">
+    <div class="wrap">
+      <h2>Why people use it</h2>
+      <p class="lead">Built to do one job well: get spoken words into text you can actually use.</p>
+      <div class="grid3">
+        <div class="card">
+          <h3>Export to Word, not just text</h3>
+          <p>Save a clean, formatted .docx Word document, or TXT or SRT subtitles. Most transcript tools stop at plain text, this one doesn't.</p>
+        </div>
+        <div class="card">
+          <h3>Laid out by speaker</h3>
+          <p>Every turn is labeled by speaker with a timestamp, so you get a readable script, not one jumbled block of text.</p>
+        </div>
+        <div class="card">
+          <h3>YouTube transcript, instantly</h3>
+          <p>Open a video, click once, get the full transcript. Works with and without auto-generated captions.</p>
+        </div>
+        <div class="card">
+          <h3>Almost any platform</h3>
+          <p>TikTok, Vimeo, Loom, Coursera and most streaming sites. Not locked to one platform.</p>
+        </div>
+        <div class="card">
+          <h3>50+ languages</h3>
+          <p>The AI handles accents, technical terms and fast speech across dozens of languages.</p>
+        </div>
+        <div class="card">
+          <h3>Search &amp; copy</h3>
+          <p>Search through the transcript, copy the quotes you need, or grab the whole thing at once.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section soft reveal" id="privacy">
+    <div class="wrap narrow privacy-box">
+      <h2>What happens to your data</h2>
+      <p class="lead" style="margin-bottom:18px;">Straight answer, because it depends on the platform.</p>
+      <ul class="ticks">
+        <li>On <b>YouTube and Vimeo</b>, the transcript is pulled from the video's own captions <b>inside your browser</b>. Nothing is sent anywhere.</li>
+        <li>On other sites, the audio stream is transcribed by an <b>AI service as it plays</b>. It is processed in the moment and <b>not stored</b>.</li>
+        <li>Your browsing history is never recorded, and <b>your data is never sold or shared</b>.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section reveal" id="faq">
+    <div class="wrap narrow">
+      <h2>Questions</h2>
+      <div class="faq">
+        <details>
+          <summary>How do I transcribe a video to text in Chrome?</summary>
+          <p>Install the extension, open any video, and click the icon. The transcript appears in the side panel in seconds. No file upload.</p>
+        </details>
+        <details>
+          <summary>How do I get a transcript of a YouTube video?</summary>
+          <p>Open the video, click the extension, and the full transcript is built for you. It works whether or not the video has auto-generated captions, and you can copy or export it as text.</p>
+        </details>
+        <details>
+          <summary>Does YouTube automatically transcribe videos?</summary>
+          <p>YouTube generates captions for many videos, but they are hard to copy and often incomplete. This extension pulls a clean, complete transcript in one click and lets you search, copy or export it.</p>
+        </details>
+        <details>
+          <summary>Can ChatGPT transcribe a YouTube video?</summary>
+          <p>ChatGPT can't watch a video or capture its audio on its own. This extension does the transcription right in your browser, then you can paste that text into ChatGPT to summarize or analyze it.</p>
+        </details>
+        <details>
+          <summary>Can I export the transcript to Word?</summary>
+          <p>Yes. Save it as a formatted .docx Word document, or as TXT or SRT subtitles. Most transcription tools only hand you plain text, so this is one of the main reasons people switch.</p>
+        </details>
+        <details>
+          <summary>Does it separate speakers?</summary>
+          <p>Yes. The transcript is laid out speaker by speaker with timestamps, so it reads like a clean script instead of one long block of text.</p>
+        </details>
+        <details>
+          <summary>Which platforms are supported?</summary>
+          <p>YouTube, TikTok, Vimeo, Loom, Coursera and most streaming sites, including content behind a login. It's a transcript-of-any-video tool, not limited to one platform.</p>
+        </details>
+        <details>
+          <summary>Which languages does it support?</summary>
+          <p>Over 50 languages. The AI handles accents, technical terms and fast speech with high accuracy.</p>
+        </details>
+        <details>
+          <summary>Is it free?</summary>
+          <p>Yes, it's free to use. YouTube transcripts are unlimited and need no sign-up. For other sites, AI mode gives you 3 transcripts without an account; after that, a free Google sign-in unlocks more every month.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section class="section soft reveal" id="contact">
+    <div class="wrap contact">
+      <h2>Contact us</h2>
+      <p class="lead">A question, a bug or an idea? Write to <a href="mailto:team@devexthub.com">team@devexthub.com</a> or use the form, we reply by email.</p>
+      <form id="contactForm" novalidate>
+        <input type="email" name="email" placeholder="Your email" autocomplete="email" required>
+        <textarea name="message" rows="4" placeholder="Your message" required></textarea>
+        <input type="text" name="website" tabindex="-1" autocomplete="off" class="hp" aria-hidden="true">
+        <button class="btn" type="submit">Send message</button>
+        <p class="contact-status" id="contactStatus" role="status"></p>
+      </form>
+    </div>
+  </section>
+
+  <section class="section reveal">
+    <div class="wrap" style="text-align:center;">
+      <h2>Turn your next video into text</h2>
+      <p class="lead" style="margin:0 auto 26px;">Free, one click, right inside Chrome.</p>
+      <a class="btn btn-lg store-link" href="https://chromewebstore.google.com/detail/mgblgaahjeahphiahfakjiabnheanbhj" data-umami-event="store-click" data-umami-event-ext="transcribe">Add to Chrome &middot; free</a>
+    </div>
+  </section>
+</main>
+
+<a class="sticky-cta store-link" href="https://chromewebstore.google.com/detail/mgblgaahjeahphiahfakjiabnheanbhj" data-umami-event="store-click" data-umami-event-ext="transcribe">Add to Chrome &middot; free</a>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <a class="store-link" href="https://chromewebstore.google.com/detail/mgblgaahjeahphiahfakjiabnheanbhj" data-umami-event="store-click" data-umami-event-ext="transcribe">Chrome Web Store</a>
+    <a href="/pricing/">Pricing</a>
+    <a href="/#contact">Contact</a>
+    <a href="/terms/">Terms</a>
+    <a href="/refund-policy/">Refunds</a>
+    <a href="/privacy-policy/">Privacy</a>
+    <span style="display:block;margin-top:12px;font-size:13px;">YouTube is a trademark of Google LLC, Vimeo is a trademark of Vimeo.com, Inc. All other product names belong to their owners. Transcribe Video to Text is an independent tool, not affiliated with or endorsed by Google, YouTube or Vimeo.</span>
+    <span style="display:block;margin-top:12px;">&copy; 2026 Transcribe Video to Text</span>
+  </div>
+</footer>
+
+<script>
+// Add UTM tags to every Chrome Web Store link so installs show up
+// as "tvt_site" in the CWS developer dashboard sources.
+(function () {
+  // Пришёл из кабинета /app (карточки «More free tools» или меню) — своя метка источника.
+  var src = "tvt_site";
+  var utm = "utm_source=" + src + "&utm_medium=referral&utm_campaign=transcribe-video-to-text";
+  document.querySelectorAll("a.store-link").forEach(function (a) {
+    a.href += (a.href.indexOf("?") === -1 ? "?" : "&") + utm;
+  });
+  // Reveal-on-scroll
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll(".reveal").forEach(function (el) { io.observe(el); });
+  // Show floating CTA once the hero button is scrolled out of view
+  var floatCta = document.querySelector(".sticky-cta");
+  var hero = document.querySelector(".hero .cta-row");
+  if (floatCta && hero && "IntersectionObserver" in window) {
+    new IntersectionObserver(function (entries) {
+      floatCta.classList.toggle("show", !entries[0].isIntersecting);
+    }, { threshold: 0 }).observe(hero);
+  }
+})();
+
+// Форма связи (12.10, требование monetize.software к сайту продукта): пишет в наш /api/feedback,
+// Денису прилетает алерт в Telegram. Скрытое поле website заполняют только боты, им молча «успех».
+(function () {
+  var f = document.getElementById("contactForm"), st = document.getElementById("contactStatus");
+  if (!f) return;
+  f.addEventListener("submit", function (e) {
+    e.preventDefault();
+    var email = f.email.value.trim(), msg = f.message.value.trim();
+    st.className = "contact-status";
+    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email) || msg.length < 3) {
+      st.className = "contact-status err"; st.textContent = "Please add your email and a message."; return;
+    }
+    if (f.website.value) { f.reset(); st.textContent = "Thanks! We will reply by email."; return; }
+    var btn = f.querySelector("button"); btn.disabled = true; st.textContent = "Sending…";
+    fetch("https://transcribe.devexthub.com:8443/api/feedback", {
+      method: "POST", headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email: email, message: msg, category: "support", pageUrl: location.href })
+    }).then(function (r) {
+      if (!r.ok) throw new Error(r.status);
+      f.reset(); st.textContent = "Thanks! We will reply by email.";
+    }).catch(function () {
+      st.className = "contact-status err"; st.textContent = "Could not send. Please email us instead.";
+    }).then(function () { btn.disabled = false; });
+  });
+})();
+</script>
+</body>
+</html>
