@@ -84,6 +84,27 @@ s = one(s, '<a href="https://www.devexthub.com/transcribe-video-to-text/">devext
 s = s.replace('&copy; 2026 Devexthub. ', '&copy; 2026 Transcribe Video to Text. ')
 write('privacy-policy/index.html', s)
 
+# Кабинет (16.10, модерация monetize: оплата, Manage subscription и Contact support на домене продукта).
+# API на api.<домен>: кука сессии ставится на .transcribevideototext.app (site.js по Host).
+API_OLD, API_NEW = 'https://transcribe.devexthub.com:8443', 'https://api.transcribevideototext.app:8443'
+s = open(f'{SRC}/app/index.html').read()
+s = one(s, '<a class="brand" href="/" target="_blank" rel="noopener"><span class="dot"></span>Devexthub</a>',
+        '<a class="brand" href="/" target="_blank" rel="noopener"><span class="dot"></span>Transcribe Video to Text</a>')
+s = one(s, 'href="/transcribe-video-to-text/" target="_blank" rel="noopener" data-i18n="cta_how"', 'href="/#how" target="_blank" rel="noopener" data-i18n="cta_how"')
+# Соседние продукты остаются воронкой, но ведут на devexthub (у этого сайта своих страниц нет).
+for slug in ['pdf-to-excel', 'extract-text-from-image', 'image-enhancer', 'convert-mov-to-mp4']:
+    s = one(s, f'class="xp-card" href="/{slug}/"', f'class="xp-card" href="https://www.devexthub.com/{slug}/"')
+s = re.sub(r'<footer class="site-foot">.*?</footer>', FOOTER, s, count=1, flags=re.S)
+s = s.replace(UMAMI_OLD, UMAMI_NEW).replace(' — Devexthub</title>', ' — Transcribe Video to Text</title>')
+write('app/index.html', s)
+s = open(f'{SRC}/app/app.js').read()
+s = one(s, API_OLD, API_NEW, 2)
+write('app/app.js', s)
+s = open(f'{SRC}/app/i18n.js').read()
+s = s.replace(' — Devexthub', ' — Transcribe Video to Text').replace('team@devexthub.com', 'support@transcribevideototext.app')
+write('app/i18n.js', s)
+shutil.copy(f'{SRC}/app/app.css', 'app/app.css')
+
 # Почта продукта: пересылка Dynadot support@ → team@devexthub.com (проверено Денисом 16.10).
 for root, _, files in os.walk('.'):
     for f in files:
@@ -93,9 +114,9 @@ for root, _, files in os.walk('.'):
 
 shutil.copy(f'{SRC}/styles.css', 'styles.css')
 os.makedirs('assets', exist_ok=True)
-for a in ['logo-mark.svg', 'logo-mark-32.png', 'logo-mark-180.png', 'tvt-demo.jpg', 'tvt-platforms.jpg', 'tvt-og.jpg']:
+for a in ['pdf-to-excel-icon-128.png', 'extract-text-icon-128.png', 'image-enhancer-icon-128.png', 'convert-mov-icon-128.png', 'logo-mark.svg', 'logo-mark-32.png', 'logo-mark-180.png', 'tvt-demo.jpg', 'tvt-platforms.jpg', 'tvt-og.jpg']:
     shutil.copy(f'{SRC}/assets/{a}', f'assets/{a}')
-write('CNAME', 'transcribevideototext.app\n')
+write('CNAME', 'transcribevideototext.app')
 write('.nojekyll', '')
 write('robots.txt', f'User-agent: *\nAllow: /\nSitemap: {DOM}/sitemap.xml\n')
 write('sitemap.xml', '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'

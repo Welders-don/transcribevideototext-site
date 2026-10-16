@@ -1,0 +1,164 @@
+/* Кабинет: список слева, транскрипт справа. Поверх общего styles.css. */
+
+.app-wrap { padding-top: 34px; padding-bottom: 56px; min-height: 60vh; }
+.hidden { display: none !important; }
+.muted { color: var(--muted); }
+
+.app-state { max-width: 620px; padding: 40px 0; }
+.app-state h1 { font-size: 34px; line-height: 1.15; margin: 0 0 14px; }
+.app-state .lead { font-size: 19px; color: var(--ink-soft); }
+.app-state .cta-row { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 26px; }
+
+.btn.ghost { background: transparent; color: var(--ink); border: 1px solid var(--line); }
+.btn.small { font-size: 15px; padding: 9px 16px; }
+
+.app-head { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-bottom: 20px; }
+.app-head h1 { font-size: 28px; margin: 0; }
+
+.app-grid { display: grid; grid-template-columns: 320px 1fr; gap: 22px; align-items: start; }
+
+.app-list { border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; background: var(--bg-soft); }
+.item { display: block; width: 100%; text-align: left; border: 0; border-bottom: 1px solid var(--line); background: transparent; padding: 13px 15px; cursor: pointer; font: inherit; }
+.item:last-child { border-bottom: 0; }
+.item:hover { background: #fff; }
+.item.on { background: #fff; box-shadow: inset 3px 0 0 var(--green); }
+.item .meta { display: flex; justify-content: space-between; gap: 8px; font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: .4px; color: var(--muted); margin-bottom: 4px; }
+.item .prev { font-size: 13px; color: var(--ink-soft); line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.item .dot-sum { color: var(--green); }
+
+.app-main { border: 1px solid var(--line); border-radius: var(--radius); padding: 22px 24px; box-shadow: var(--shadow-card); min-height: 320px; }
+.detail-title { font-size: 20px; line-height: 1.3; margin: 0 0 12px; text-wrap: pretty; }
+.detail-head { display: flex; justify-content: space-between; align-items: center; gap: 14px; flex-wrap: wrap; border-bottom: 1px solid var(--line); padding-bottom: 14px; margin-bottom: 18px; }
+.detail-head .meta { font-family: var(--mono); font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: .4px; }
+.actions { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+/* accent-color вместо самодельного чекбокса: фирменный цвет без потери доступности */
+.signin-row { margin: 26px 0 10px; color: var(--muted); }
+#signinEmpty { display: inline-flex; min-height: 32px; }
+.stamp-toggle { display: inline-flex; align-items: center; gap: 2px; font-size: 14px; color: var(--muted); cursor: pointer; margin-right: 4px; }
+.stamp-toggle input { accent-color: var(--green); cursor: pointer; }
+
+.summary { background: var(--bg-soft); border: 1px solid var(--line); border-radius: 11px; padding: 16px 18px; margin-bottom: 18px; white-space: pre-wrap; font-size: 16px; line-height: 1.55; }
+.summary h3 { margin: 0 0 8px; font-size: 13px; text-transform: uppercase; letter-spacing: .6px; color: var(--muted); }
+
+/* Пока саммари считается — движущаяся полоска. Без неё минута ожидания читается как зависание. */
+.summary.working .hint { font-size: 13px; margin-top: 8px; }
+.progress { height: 3px; border-radius: 2px; background: var(--line); overflow: hidden; margin-top: 12px; }
+.progress span { display: block; height: 100%; width: 40%; border-radius: 2px; background: var(--green); animation: progressSlide 1.3s ease-in-out infinite; }
+@keyframes progressSlide {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(250%); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .progress span { animation: none; width: 100%; opacity: .5; }
+}
+
+.gate { border: 1px solid #e3d5ac; background: #fdf8ec; border-radius: 11px; padding: 16px 18px; margin-bottom: 18px; }
+.gate b { display: block; margin-bottom: 4px; }
+.gate-signin { margin-top: 12px; }
+#signin { display: inline-flex; align-items: center; min-height: 32px; }
+.plan-line { margin: -12px 0 16px; font-size: 14px; }
+.plan-manage, .plan-support { color: inherit; text-decoration: underline; }
+
+.transcript { font-size: 16px; line-height: 1.65; color: var(--ink-soft); max-height: 62vh; overflow-y: auto; }
+.transcript .para { margin: 0 0 16px; text-wrap: pretty; }
+.transcript .seg { display: flex; gap: 12px; padding: 6px 0; }
+.seg-time { flex-shrink: 0; font-family: var(--mono); font-size: 12px; color: var(--muted); padding-top: 3px; }
+
+.err { color: #a3352f; }
+
+@media (max-width: 860px) {
+  .app-grid { grid-template-columns: 1fr; }
+  .app-list { max-height: 40vh; overflow-y: auto; }
+}
+
+/* пометка beta на кнопке саммари */
+.beta {
+  margin-left: 7px; font-size: 10px; font-weight: 700; letter-spacing: .5px;
+  text-transform: uppercase; opacity: .75; border: 1px solid currentColor;
+  border-radius: 4px; padding: 1px 4px; line-height: 1.3;
+}
+
+/* Метка говорящего: тот же смысл, что в панели расширения, но спокойнее по цвету */
+.seg-speaker { flex-shrink: 0; font-family: var(--mono); font-size: 11px; text-transform: uppercase;
+  letter-spacing: .4px; color: var(--green); padding-top: 3px; }
+
+/* Отклик на саммари (24.09): копировать + полезно ли. Под текстом, не спорит с ним. */
+.sum-foot { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-top: 14px;
+  padding-top: 12px; border-top: 1px solid var(--line); white-space: normal; font-size: 14px; }
+.sum-vote { display: inline-flex; align-items: center; gap: 8px; white-space: nowrap; margin-left: 6px; }
+.vote { background: transparent; border: 1px solid var(--line); border-radius: 8px; padding: 3px 9px;
+  font-size: 16px; line-height: 1.3; cursor: pointer; opacity: .6; }
+.vote:hover, .vote:focus-visible { opacity: 1; }
+.vote.on { opacity: 1; border-color: var(--green); background: var(--bg); }
+.small-note { font-size: 13px; }
+
+/* Вкладки над текстом: транскрипт / читаемый текст (1.3.1) */
+.tabs { display: flex; gap: 4px; border-bottom: 1px solid var(--line); margin-bottom: 14px; }
+.tab { background: transparent; border: 0; border-bottom: 2px solid transparent; margin-bottom: -1px;
+  padding: 8px 12px; font: inherit; font-size: 15px; font-weight: 600; color: var(--muted); cursor: pointer; }
+.tab:hover, .tab:focus-visible { color: var(--ink); }
+.tab.on { color: var(--ink); border-bottom-color: var(--green); }
+.notes-pitch { margin: -8px 0 16px; }
+.notes-cta { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; margin: -6px 0 18px; }
+.notes { font-size: 16px; line-height: 1.55; color: var(--ink-soft); max-height: 62vh; overflow-y: auto; }
+.notes h3 { margin: 18px 0 6px; font-size: 13px; text-transform: uppercase; letter-spacing: .6px; color: var(--muted); }
+.notes h3:first-child { margin-top: 0; }
+.notes h4 { margin: 20px 0 6px; font-size: 16px; color: var(--ink); display: flex; gap: 10px; align-items: baseline; }
+.notes h4 .seg-time { padding-top: 0; }
+.notes p { margin: 0 0 6px; text-wrap: pretty; }
+
+/* Переустановка (24.09): куда делись прежние записи и как больше не терять */
+.earlier-note { margin: -6px 0 16px; padding: 10px 14px; border: 1px solid #e3d5ac; background: #fdf8ec;
+  border-radius: 11px; font-size: 14px; line-height: 1.5; }
+
+/* Остальные продукты под транскриптами */
+.xpromo { margin-top: 44px; padding-top: 22px; border-top: 1px solid var(--line); }
+.xpromo h2 { font-size: 18px; margin: 0 0 14px; color: var(--ink-soft); }
+.xp-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; }
+.xp-card { display: flex; align-items: center; gap: 12px; padding: 12px 14px; border: 1px solid var(--line); border-radius: var(--radius); color: var(--ink); text-decoration: none; font-weight: 600; font-size: 15px; transition: border-color .15s, transform .15s; }
+.xp-card:hover { border-color: var(--green); transform: translateY(-2px); }
+.xp-card img { flex: none; border-radius: 8px; }
+
+/* Левая колонка липнет при прокрутке. Блок других инструментов слева убран 14.10: за 8 дней
+   0 живых кликов против 3 снизу; остался только нижний #xpromo */
+.app-side { display: flex; flex-direction: column; gap: 14px; position: sticky; top: 84px; }
+.app-side .app-list { max-height: calc(100vh - 200px); min-height: 120px; overflow-y: auto; }
+@media (max-width: 860px) {
+  .app-side { position: static; }
+  .app-side .app-list { max-height: 40vh; }
+}
+
+/* выбор тарифа (12.10) */
+.billing-note { margin: -8px 0 16px; padding: 10px 14px; border-radius: 10px; background: #e8f5ec; color: #0f5132; font-size: 14px; }
+.upgrade { border: 1px solid var(--line); border-radius: 14px; padding: 18px 20px; margin: 0 0 22px; }
+.upgrade h2 { margin: 0 0 8px; font-size: 20px; display: flex; align-items: baseline; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.up-compare { font-size: 14px; font-weight: 400; color: inherit; }
+.up-toggle { display: flex; gap: 6px; border-bottom: 1px solid var(--line); margin-bottom: 14px; }
+.up-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; }
+.up-card { border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; display: grid; gap: 6px; align-content: start; cursor: pointer; }
+.up-card:hover { border-color: #b8c4bb; }
+.up-free { background: #fafaf8; }
+.up-cur { font-size: 12px; padding: 2px 8px; border-radius: 999px; border: 1px solid var(--line); color: var(--muted); }
+.up-card.on { border: 2px solid var(--green); padding: 13px 15px; background: #f4faf6; }
+.up-card:focus-visible { outline: 2px solid var(--green); outline-offset: 2px; }
+.up-top { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.up-name { font-weight: 600; }
+.up-badge { font-size: 12px; padding: 2px 8px; border-radius: 999px; background: var(--green); color: #fff; }
+.up-price b { font-size: 24px; }
+.up-feat { margin: 6px 0 0; padding-left: 18px; font-size: 14px; line-height: 1.5; }
+.up-go { margin-top: 14px; }
+.up-you { margin: 2px 0 2px; font-size: 15px; }
+.up-proof { margin: 0 0 12px; font-size: 13px; }
+.up-guar { margin: 8px 0 0; font-size: 13px; }
+.up-wait { margin: 4px 0 0; font-size: 13px; }
+.up-err { color: #b42318; margin: 10px 0 0; }
+.support-box { border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px; margin: -6px 0 18px; display: grid; gap: 8px; max-width: 560px; }
+.support-box textarea { font: inherit; padding: 10px 12px; border: 1px solid var(--line); border-radius: 8px; width: 100%; box-sizing: border-box; }
+.support-h { margin: 0; font-size: 14px; }
+.support-row { display: flex; align-items: center; gap: 14px; }
+.support-row a { color: inherit; font-size: 14px; }
+.support-st { font-size: 13px; }
+.support-ok { margin: 0; color: #0f5132; }
+
+/* 14.10: срок хранения переехал из шапки под список транскриптов */
+.retention-note { font-size: 13px; margin: 8px 4px 0; }
