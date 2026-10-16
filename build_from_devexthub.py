@@ -84,6 +84,13 @@ s = one(s, '<a href="https://www.devexthub.com/transcribe-video-to-text/">devext
 s = s.replace('&copy; 2026 Devexthub. ', '&copy; 2026 Transcribe Video to Text. ')
 write('privacy-policy/index.html', s)
 
+# Почта продукта: пересылка Dynadot support@ → team@devexthub.com (проверено Денисом 16.10).
+for root, _, files in os.walk('.'):
+    for f in files:
+        if f.endswith('.html') and '.git' not in root:
+            fp = os.path.join(root, f); t = open(fp).read()
+            open(fp, 'w').write(t.replace('team@devexthub.com', 'support@transcribevideototext.app'))
+
 shutil.copy(f'{SRC}/styles.css', 'styles.css')
 os.makedirs('assets', exist_ok=True)
 for a in ['logo-mark.svg', 'logo-mark-32.png', 'logo-mark-180.png', 'tvt-demo.jpg', 'tvt-platforms.jpg', 'tvt-og.jpg']:
