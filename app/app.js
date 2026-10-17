@@ -839,7 +839,7 @@
     }
     var interval = 'year', chosen = 'pro';
     var compare = document.createElement('a');
-    compare.href = '/transcribe-video-to-text/pricing/'; compare.target = '_blank'; compare.rel = 'noopener';
+    compare.href = '/pricing/'; compare.target = '_blank'; compare.rel = 'noopener';
     compare.className = 'up-compare'; compare.textContent = t('up_compare');
     h.appendChild(compare);
     var tog = document.createElement('div'); tog.className = 'up-toggle';

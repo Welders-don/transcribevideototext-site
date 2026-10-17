@@ -99,6 +99,7 @@ s = s.replace(UMAMI_OLD, UMAMI_NEW).replace(' — Devexthub</title>', ' — Tran
 write('app/index.html', s)
 s = open(f'{SRC}/app/app.js').read()
 s = one(s, API_OLD, API_NEW, 2)
+s = one(s, "compare.href = '/transcribe-video-to-text/pricing/'", "compare.href = '/pricing/'")
 write('app/app.js', s)
 s = open(f'{SRC}/app/i18n.js').read()
 s = s.replace(' — Devexthub', ' — Transcribe Video to Text').replace('team@devexthub.com', 'support@transcribevideototext.app')
