@@ -27,6 +27,7 @@ FOOTER = f'''<footer class="site-foot">
     <a href="/privacy-policy/">Privacy</a>
     <span style="display:block;margin-top:12px;font-size:13px;">YouTube is a trademark of Google LLC, Vimeo is a trademark of Vimeo.com, Inc. All other product names belong to their owners. Transcribe Video to Text is an independent tool, not affiliated with or endorsed by Google, YouTube or Vimeo.</span>
     <span style="display:block;margin-top:12px;">&copy; 2026 Transcribe Video to Text</span>
+    <span style="display:block;margin-top:4px;font-size:13px;">Legal address: Kobaltstack LLC, 447 Broadway, 2nd Floor, 3436, New York, NY 10013, US</span>
   </div>
 </footer>'''
 UMAMI_OLD = 'data-domains="www.devexthub.com,devexthub.com"'
