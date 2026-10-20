@@ -72,7 +72,8 @@ write('index.html', s)
 
 # Цены, условия, возвраты: на своём домене это и есть официальные страницы.
 for src, dst in [('transcribe-video-to-text/pricing/index.html', 'pricing/index.html'),
-                 ('terms/index.html', 'terms/index.html'), ('refund-policy/index.html', 'refund-policy/index.html')]:
+                 ('refund-policy/index.html', 'refund-policy/index.html')]:
+    # terms/ с 20.10 правится только здесь: шаблон monetize (Kobaltstack LLC) + наши пункты, пересборка не трогает.
     s = open(f'{SRC}/{src}').read()
     s = common(s, f'{DOM}/{os.path.dirname(dst)}/')
     s = s.replace('href="../"', 'href="/"')
