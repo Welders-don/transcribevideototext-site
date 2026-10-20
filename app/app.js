@@ -738,7 +738,8 @@
         date: new Date(p.renews_at).toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' }) }));
     }
     el.planLine.textContent = parts.join(' · ') + ' · ';
-    // Отмена, карта, чеки: кабинет подписчика Paddle по разовой ссылке с нашего сервера.
+    // Отмена, карта, чеки: кабинет подписчика эквайринга по разовой ссылке с нашего сервера.
+    // У Freemius (Live, 20.10) такого кабинета нет: сервер отвечает cancel:true, отменяем здесь.
     var link = document.createElement('a');
     link.href = '#'; link.className = 'plan-manage'; link.textContent = t('plan_manage');
     link.addEventListener('click', function (e) {
@@ -746,12 +747,38 @@
       link.textContent = t('loading_short');
       api('/billing/portal', { method: 'POST' })
         .then(function (r) { return r.ok ? r.json() : Promise.reject(r.status); })
-        .then(function (d) { window.location.href = d.url; })
+        .then(function (d) {
+          if (!d.cancel) { window.location.href = d.url; return; }
+          var vars = { plan: name, date: fmtDay(d.ends_at) };
+          if (d.cancelled) { link.replaceWith(document.createTextNode(t('cancel_already', vars))); return; }
+          confirmCancel(link, vars);
+        })
         .catch(function () { link.textContent = t('plan_manage_fail'); });
     });
     el.planLine.appendChild(link);
     el.planLine.appendChild(document.createTextNode(' · '));
     el.planLine.appendChild(supportLink(name));
+  }
+
+  // Подтверждение отмены на месте ссылки: без модалок, одна строка с двумя кнопками.
+  function confirmCancel(link, vars) {
+    var box = document.createElement('span'); box.className = 'plan-cancel';
+    box.appendChild(document.createTextNode(t('cancel_confirm', vars) + ' '));
+    var yes = document.createElement('a'); yes.href = '#'; yes.className = 'plan-manage'; yes.textContent = t('cancel_yes');
+    var keep = document.createElement('a'); keep.href = '#'; keep.className = 'plan-manage'; keep.textContent = t('cancel_keep');
+    box.appendChild(yes); box.appendChild(document.createTextNode(' · ')); box.appendChild(keep);
+    link.replaceWith(box);
+    keep.addEventListener('click', function (e) { e.preventDefault(); loadMe(state.openId); });
+    yes.addEventListener('click', function (e) {
+      e.preventDefault();
+      yes.textContent = t('loading_short');
+      api('/billing/cancel', { method: 'POST' })
+        .then(function (r) { return r.ok ? r.json() : Promise.reject(r.status); })
+        .then(function (d) {
+          box.replaceWith(document.createTextNode(t('cancel_done', { plan: vars.plan, date: fmtDay(d.ends_at) || vars.date })));
+        })
+        .catch(function () { yes.textContent = t('cancel_fail'); });
+    });
   }
 
   // Поддержка прямо в кабинете (13.10, Денис: «у подписки негде оставить обращение», mailto не форма).
