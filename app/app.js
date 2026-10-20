@@ -725,13 +725,18 @@
 
   // Платный тариф (12.10): одна строка минут под заголовком. Месячная подписка: сброс минут
   // и продление в один день, пишем только сброс. Годовая: минуты помесячно, продление отдельно.
+  // Отменённая (20.10): последний месяц = «ends <дата>» вместо новых минут, у годовой вместо продления.
   function renderPlan(p) {
     el.planLine.classList.toggle('hidden', !p);
     if (!p) return;
     var name = p.name === 'pro' ? 'Pro' : 'Lite';
-    var parts = [name, t('plan_left', { left: p.left, total: p.minutes }), t('plan_reset', { date: fmtDay(p.resets_at) })];
-    if (p.interval === 'year' && p.renews_at) parts.push(t('plan_renews', {
-      date: new Date(p.renews_at).toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' }) }));
+    var parts = [name, t('plan_left', { left: p.left, total: p.minutes })];
+    if (p.ending) parts.push(t('plan_ends', { date: fmtDay(p.resets_at) }));
+    else {
+      parts.push(t('plan_reset', { date: fmtDay(p.resets_at) }));
+      if (p.interval === 'year' && p.renews_at) parts.push(t(p.cancelled ? 'plan_ends' : 'plan_renews', {
+        date: new Date(p.renews_at).toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' }) }));
+    }
     el.planLine.textContent = parts.join(' · ') + ' · ';
     // Отмена, карта, чеки: кабинет подписчика Paddle по разовой ссылке с нашего сервера.
     var link = document.createElement('a');
