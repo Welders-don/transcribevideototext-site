@@ -79,12 +79,8 @@ for src, dst in [('transcribe-video-to-text/pricing/index.html', 'pricing/index.
     s = s.replace('href="../"', 'href="/"')
     write(dst, s)
 
-# Политика: та же, что в CWS (transcribe-video-to-text-privacy), сайт продукта вместо devexthub.
-s = open(PRIV).read()
-s = one(s, '<a href="https://www.devexthub.com/transcribe-video-to-text/">devexthub.com/transcribe-video-to-text</a>',
-        f'<a href="{DOM}/">transcribevideototext.app</a>')
-s = s.replace('&copy; 2026 Devexthub. ', '&copy; 2026 Transcribe Video to Text. ')
-write('privacy-policy/index.html', s)
+# privacy-policy/ с 20.10 правится только здесь (шаблон monetize, Kobaltstack LLC + наши пункты), пересборка её не трогает.
+# Политика для CWS по-прежнему в transcribe-video-to-text-privacy (PRIV), она не синхронизируется.
 
 # Кабинет (16.10, модерация monetize: оплата, Manage subscription и Contact support на домене продукта).
 # API на api.<домен>: кука сессии ставится на .transcribevideototext.app (site.js по Host).
