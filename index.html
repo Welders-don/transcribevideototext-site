@@ -2,6 +2,11 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<script>
+// 20.10: после оплаты Freemius уводит на главную (адрес возврата в их кабинете не настроен, ждём monetize):
+// пришли с кассы = сразу в кабинет, там «оплата прошла, тариф включается». Остальных не трогаем.
+if (/^https:\/\/checkout\.freemius\.com\//.test(document.referrer)) location.replace('/app/?billing=success');
+</script>
 <link rel="icon" href="/assets/logo-mark.svg" type="image/svg+xml">
 <link rel="icon" href="/assets/logo-mark-32.png" sizes="32x32" type="image/png">
 <link rel="apple-touch-icon" href="/assets/logo-mark-180.png">
