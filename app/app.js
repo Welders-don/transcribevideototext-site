@@ -854,14 +854,9 @@
     el.upgrade.innerHTML = '';
     var fu = data.free_usage;
     var h = document.createElement('h2'); h.textContent = t(fu && fu.remaining === 0 ? 'up_h_out' : 'upgrade_h'); el.upgrade.appendChild(h);
-    // Личная статистика + соцдоказательство (12.10, данные RevenueCat/RocketShip: контекст и
-    // доверие поднимают покупку). Цифры WAU и рейтинга сверены 13.10: 1 802 в неделю, 4.8 ★ (21).
-    if (fu && fu.minutes > 0) {
-      var me = document.createElement('p'); me.className = 'up-you';
-      var hrs = Math.floor(fu.minutes / 60), mins = fu.minutes % 60;
-      me.textContent = t('up_you_used', { time: (hrs ? hrs + ' ' + t('up_h') + ' ' : '') + mins + ' ' + t('up_min') });
-      el.upgrade.appendChild(me);
-    }
+    // Соцдоказательство (12.10, RevenueCat/RocketShip). Цифры WAU и рейтинга сверены 13.10: 1 802 в неделю, 4.8 ★ (21).
+    // 25.10 Денис: строку «в этом месяце вы расшифровали N ч» убрали — у 60% упёршихся бесплатно
+    // ушло больше 150 мин, рядом с Lite 150 мин она читалась как «тариф меньше бесплатного».
     var proof = document.createElement('p'); proof.className = 'muted up-proof'; proof.textContent = t('up_social');
     el.upgrade.appendChild(proof);
     if (!data.signed_in) {
