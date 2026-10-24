@@ -878,7 +878,7 @@
     ['year', 'month'].forEach(function (iv) {
       var b = document.createElement('button'); b.type = 'button'; b.className = 'tab'; b.dataset.iv = iv;
       b.textContent = t(iv === 'year' ? 'up_yearly_save' : 'up_monthly');
-      b.addEventListener('click', function () { interval = iv; paint(); });
+      b.addEventListener('click', function () { interval = iv; paint(); track('toggle'); });
       tog.appendChild(b);
     });
     el.upgrade.appendChild(tog);
@@ -893,6 +893,11 @@
     var carry = document.createElement('p'); carry.className = 'muted up-carry hidden'; el.upgrade.appendChild(carry);
 
     var err = document.createElement('p'); err.className = 'up-err hidden'; el.upgrade.appendChild(err);
+    // 24.10: клики по витрине в events — где останавливаются между выбором тарифа и кассой.
+    function track(kind) {
+      api('/upgrade_ui', { method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ kind: kind, plan: chosen, interval: interval }) }).catch(function () {});
+    }
     var FEATURES = {
       lite: ['up_f_courses', 'up_f_2h', 'up_f_unlim', 'up_f_free'],
       pro: ['up_f_courses', 'up_f_2h', 'up_f_unlim', 'up_f_support', 'up_f_free'],
@@ -913,8 +918,8 @@
       ['up_free_yt', 'up_free_ai', 'up_free_export', 'up_free_sum'].forEach(function (k) {
         var li = document.createElement('li'); li.textContent = t(k); fc.querySelector('.up-feat').appendChild(li);
       });
-      fc.addEventListener('click', function () { chosen = 'free'; paint(); });
-      fc.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); chosen = 'free'; paint(); } });
+      fc.addEventListener('click', function () { chosen = 'free'; paint(); track('card'); });
+      fc.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); chosen = 'free'; paint(); track('card'); } });
       cards.appendChild(fc);
       ['lite', 'pro'].forEach(function (plan) {
         var pr = PRICES[plan], c = document.createElement('div');
@@ -932,7 +937,7 @@
         [t('up_f_minutes', { n: pr.minutes, h: t(plan === 'pro' ? 'up_f_hours_pro' : 'up_f_hours_lite') })]
           .concat(FEATURES[plan].map(function (k) { return t(k); }))
           .forEach(function (txt) { var li = document.createElement('li'); li.textContent = txt; ul.appendChild(li); });
-        function pick() { chosen = plan; paint(); }
+        function pick() { chosen = plan; paint(); track('card'); }
         c.addEventListener('click', pick);
         c.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); pick(); } });
         cards.appendChild(c);
