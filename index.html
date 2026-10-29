@@ -13,7 +13,7 @@ if (/^https:\/\/checkout\.freemius\.com\//.test(document.referrer)) location.rep
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>YouTube Transcript & Video to Text, free Chrome extension</title>
 <meta name="description" content="Get a YouTube transcript or turn any video into text in one click. Clean speaker-by-speaker layout with timestamps, export to Word, TXT or SRT. Works on YouTube, TikTok, Vimeo, Loom and most sites. 50+ languages, YouTube with no sign-up.">
-<link rel="canonical" href="https://www.devexthub.com/transcribe-video-to-text/">
+<link rel="canonical" href="https://transcribevideototext.app/">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"SoftwareApplication","name":"Transcribe Video to Text","applicationCategory":"UtilitiesApplication","operatingSystem":"Chrome","url":"https://transcribevideototext.app/","downloadUrl":"https://chromewebstore.google.com/detail/mgblgaahjeahphiahfakjiabnheanbhj","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
 </script>
@@ -32,6 +32,19 @@ if (/^https:\/\/checkout\.freemius\.com\//.test(document.referrer)) location.rep
 .contact .hp { position: absolute; left: -9999px; width: 1px; height: 1px; }
 .contact-status { margin: 0; min-height: 1.4em; }
 .contact-status.err { color: #b42318; }
+.hero { padding-left: 22px; padding-right: 22px; }
+.yt-tool { max-width: 760px; margin: 26px auto 22px; text-align: left; }
+.yt-form { display: flex; gap: 10px; flex-wrap: wrap; }
+.yt-form input { flex: 1 1 320px; font: inherit; font-size: 17px; padding: 14px 16px; border: 2px solid #b9dcc8; border-radius: 12px; background: #fff; min-width: 0; }
+.yt-form input:focus { border-color: var(--green); outline: none; }
+.yt-hint { margin: 8px 2px 0; color: var(--muted); font-size: 14px; }
+.yt-box { margin-top: 16px; border: 1px solid var(--line); border-radius: 16px; padding: 22px; background: var(--bg); box-shadow: var(--shadow-card); }
+.yt-box h3 { margin: 0 0 4px; font-size: 19px; }
+.yt-box p { margin: 0 0 14px; color: var(--muted); font-size: 15.5px; }
+.yt-row { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+#yt-text { width: 100%; min-height: 260px; box-sizing: border-box; margin: 10px 0 14px; padding: 12px; border: 1px solid var(--line); border-radius: 10px; font: inherit; font-size: 15px; line-height: 1.55; color: var(--ink); background: var(--bg-soft); resize: vertical; }
+.yt-stamps { color: var(--muted); font-size: 15px; display: inline-flex; gap: 6px; align-items: center; }
+.yt-ext { margin: 18px 0 0; padding-top: 16px; border-top: 1px solid var(--line); }
 </style>
 <script defer src="https://api.devexthub.com:8443/u/script.js" data-website-id="9cd8ea39-4803-4558-82cb-4821a96e581d" data-host-url="https://api.devexthub.com:8443/u" data-domains="transcribevideototext.app"></script>
 </head>
@@ -49,10 +62,49 @@ if (/^https:\/\/checkout\.freemius\.com\//.test(document.referrer)) location.rep
 </header>
 
 <main>
-  <section class="hero-band reveal">
+  <section class="hero-band">
    <div class="hero wrap">
     <h1><span class="fx-line"><span class="fx-w" style="--i:0">Get</span> <span class="fx-w" style="--i:1">a</span> <span class="fx-w" style="--i:2">transcript</span> <span class="fx-w" style="--i:3">of</span></span><span class="fx-line"><span class="fx-w" style="--i:4">any</span> <span class="fx-w" style="--i:5">video</span> <span class="fx-w" style="--i:6">in</span> <span class="fx-w arrow" style="--i:7">one&nbsp;click</span></span></h1>
     <p class="sub">Turn a YouTube video, TikTok, Vimeo, Loom or almost any recording into clean text, laid out by speaker with timestamps. Export it to Word, TXT or SRT. 50+ languages. YouTube works with no&nbsp;sign&#8209;up.</p>
+    <div class="yt-tool" id="try">
+      <form class="yt-form" id="yt-form">
+        <input id="yt-url" type="text" inputmode="url" autocomplete="off" placeholder="Paste a YouTube link" aria-label="YouTube video link">
+        <button class="btn btn-lg" type="submit">Get transcript</button>
+      </form>
+      <p class="yt-hint">Free, no sign-up. Works with any YouTube video that has captions, including auto-generated ones.</p>
+
+      <div id="yt-busy" class="yt-box" hidden>
+        <h3>Getting the transcript&hellip;</h3>
+        <p>Usually a few seconds.</p>
+      </div>
+
+      <div id="yt-done" class="yt-box" hidden>
+        <h3 id="yt-title"></h3>
+        <p id="yt-meta"></p>
+        <label class="yt-stamps"><input type="checkbox" id="yt-stamps"> Timestamps</label>
+        <textarea id="yt-text" spellcheck="false" aria-label="Transcript"></textarea>
+        <div class="yt-row">
+          <button type="button" class="btn" id="yt-copy">Copy</button>
+          <button type="button" class="btn btn-ghost" id="yt-txt">Download .txt</button>
+          <button type="button" class="btn btn-ghost" id="yt-srt">Download .srt</button>
+        </div>
+        <div class="yt-ext">
+          <p>Need a video without captions, a course behind a login, Vimeo or a meeting recording? The free Chrome extension transcribes the audio of any tab with AI, and exports to Word.</p>
+          <a class="btn store-link" href="https://chromewebstore.google.com/detail/mgblgaahjeahphiahfakjiabnheanbhj?utm_content=yt-widget" data-umami-event="store-click" data-umami-event-ext="transcribe" data-umami-event-place="yt-widget">Add to Chrome &middot; free</a>
+        </div>
+      </div>
+
+      <div id="yt-none" class="yt-box" hidden>
+        <h3>This video has no captions</h3>
+        <p>There is no text to grab yet. Our free Chrome extension can transcribe it with AI while it plays: open the video, click the icon, press Transcribe.</p>
+        <a class="btn store-link" href="https://chromewebstore.google.com/detail/mgblgaahjeahphiahfakjiabnheanbhj?utm_content=yt-no-captions" data-umami-event="store-click" data-umami-event-ext="transcribe" data-umami-event-place="yt-no-captions">Add to Chrome &middot; free</a>
+      </div>
+
+      <div id="yt-error" class="yt-box" hidden>
+        <h3>That didn't work</h3>
+        <p id="yt-error-text"></p>
+      </div>
+    </div>
     <div class="cta-row">
       <a class="btn btn-lg store-link" href="https://chromewebstore.google.com/detail/mgblgaahjeahphiahfakjiabnheanbhj" data-umami-event="store-click" data-umami-event-ext="transcribe">Add to Chrome &middot; free</a>
     </div>
@@ -248,6 +300,7 @@ if (/^https:\/\/checkout\.freemius\.com\//.test(document.referrer)) location.rep
   </div>
 </footer>
 
+<script type="module" src="/assets/yt/tool.js"></script>
 <script>
 // Add UTM tags to every Chrome Web Store link so installs show up
 // as "tvt_site" in the CWS developer dashboard sources.
@@ -265,7 +318,8 @@ if (/^https:\/\/checkout\.freemius\.com\//.test(document.referrer)) location.rep
   document.querySelectorAll(".reveal").forEach(function (el) { io.observe(el); });
   // Show floating CTA once the hero button is scrolled out of view
   var floatCta = document.querySelector(".sticky-cta");
-  var hero = document.querySelector(".hero .cta-row");
+  // 29.10: следим за всем hero, а не за кнопкой: результат виджета лежит в hero, плашка не должна его закрывать.
+  var hero = document.querySelector(".hero");
   if (floatCta && hero && "IntersectionObserver" in window) {
     new IntersectionObserver(function (entries) {
       floatCta.classList.toggle("show", !entries[0].isIntersecting);
